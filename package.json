@@ -1,0 +1,49 @@
+{
+  "name": "structured-exam-items",
+  "productName": "시험딸깍",
+  "version": "1.0.0",
+  "description": "시험딸깍",
+  "main": "electron/main.js",
+  "private": true,
+  "scripts": {
+    "start": "node electron/copy-vendor.js && electron .",
+    "test": "node tests/engine.test.js",
+    "vendor": "node electron/copy-vendor.js",
+    "dist": "node electron/copy-vendor.js && electron-builder --win portable",
+    "dist:setup": "node electron/copy-vendor.js && electron-builder --win nsis"
+  },
+  "build": {
+    "appId": "local.structured-exam-items",
+    "productName": "시험딸깍",
+    "artifactName": "시험딸깍-${version}-${arch}.${ext}",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "index.html",
+      "css/**",
+      "fonts/**",
+      "js/**",
+      "vendor/**",
+      "assets/**",
+      "electron/main.js",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        "portable"
+      ],
+      "icon": "assets/icon.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  },
+  "devDependencies": {
+    "@fontsource/nanum-myeongjo": "^5.3.0",
+    "electron": "^45.4.1",
+    "electron-builder": "^26.18.0",
+    "mathjax": "^3.2.2"
+  }
+}

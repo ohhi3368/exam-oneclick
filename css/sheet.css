@@ -1,0 +1,62 @@
+/* 가운데 화면: 시험지(바탕체), 조건 상자, 풀이, 검증, 코드 */
+.view h2 { font-size: 22px; font-weight: 500; letter-spacing: -0.4px; margin: 0 0 6px; }
+.view .lead { color: var(--grey); margin: 0 0 28px; max-width: 46em; word-break: keep-all; }
+.section { margin-bottom: 36px; }
+.section > h3 { font-size: 15px; font-weight: 500; margin: 0 0 12px; padding-bottom: 8px; border-bottom: 1px solid var(--ink); display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.section > h3 .acts { display: flex; gap: 16px; font-size: 13px; }
+.msg { border-left: 2px solid var(--ink); padding: 4px 0 4px 14px; margin: 0 0 20px; }
+.msg.soft { border-left-color: var(--rule); color: var(--grey); }
+
+/* 시험지 */
+.sheet { border: 1px solid var(--rule); padding: 52px 56px 44px; margin-bottom: 18px; position: relative; }
+.sheet-acts { position: absolute; top: 14px; right: 18px; display: flex; gap: 16px; font-size: 13px; }
+.q-paper { font-family: var(--serif); font-size: 17px; line-height: 2.05; word-break: keep-all; }
+.q-num { margin-right: 8px; }
+.q-score { white-space: nowrap; }
+.cbox { border: 1px solid var(--ink); padding: 10px 22px; margin: 14px 0 10px; }
+.cbox-row { display: grid; grid-template-columns: 2.6em 1fr; }
+.choices { font-family: var(--serif); display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; margin-top: 22px; font-size: 17px; }
+.mats { display: flex; flex-wrap: wrap; gap: 28px; margin-top: 22px; align-items: flex-start; }
+.graph { margin: 0; }
+.graph svg { display: block; max-width: 100%; height: auto; }
+.graph figcaption { margin-top: 6px; font-size: 12px; display: flex; gap: 12px; flex-wrap: wrap; }
+table.vt { border-collapse: collapse; font-family: var(--serif); font-size: 15px; }
+table.vt td, table.vt th { border: 1px solid var(--ink); padding: 5px 12px; text-align: center; min-width: 40px; font-weight: normal; }
+
+/* 정답과 풀이 */
+.answer { font-size: 22px; display: flex; gap: 18px; align-items: baseline; flex-wrap: wrap; margin-bottom: 6px; }
+.answer .note { font-size: 13px; color: var(--grey); }
+.steps { margin: 0; padding: 0; list-style: none; counter-reset: st; font-family: var(--serif); font-size: 16px; line-height: 1.95; }
+.steps li { padding: 3px 0 3px 2.2em; position: relative; }
+.steps li:not(.case)::before { counter-increment: st; content: counter(st) "."; position: absolute; left: 0; width: 1.7em; text-align: right; }
+.steps li.case { padding-left: 0; margin: 14px 0 2px; font-family: var(--sans); font-size: 14px; }
+.steps li.drop { color: var(--grey); }
+
+/* 검증 */
+.checks-list { list-style: none; margin: 0; padding: 0; }
+.checks-list li { display: grid; grid-template-columns: 28px 1fr auto; gap: 10px; padding: 12px 0; border-bottom: 1px solid var(--rule); align-items: baseline; }
+.checks-list .sym { font-size: 15px; }
+.checks-list .nt { color: var(--grey); font-size: 13px; text-align: right; }
+
+/* 요청문·BeAT 답변 */
+pre.code { white-space: pre-wrap; word-break: break-word; border: 1px solid var(--rule); background: var(--tint); padding: 18px 20px; font-size: 13px; line-height: 1.7; max-height: 420px; overflow: auto; margin: 0; font-family: var(--sans); }
+.ai-text { white-space: pre-wrap; font-family: var(--serif); font-size: 15.5px; line-height: 1.9; border-left: 2px solid var(--rule); padding-left: 18px; }
+.ai-text .ai-disp { display: block; margin: 4px 0; overflow-x: auto; overflow-y: hidden; white-space: normal; }
+.ai-text .ai-math { white-space: nowrap; }
+.ai-text .ai-h { font-family: var(--sans); font-weight: 500; }
+
+/* 동형 문항 */
+.variants { list-style: none; padding: 0; margin: 0; }
+.variants li { display: grid; grid-template-columns: 1fr auto; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--rule); align-items: start; }
+.variants .vq { font-family: var(--serif); font-size: 15.5px; line-height: 1.9; }
+.variants .va { color: var(--grey); font-size: 13px; margin-top: 4px; }
+
+@media (max-width: 860px) {
+  .sheet { padding: 40px 22px 28px; }
+  .choices { grid-template-columns: repeat(2, 1fr); }
+}
+@media print {
+  .bar, .sb, .side, .sheet-acts, .graph figcaption { display: none !important; }
+  .work { display: block; }
+  .sheet { border: 0; padding: 0; }
+}

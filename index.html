@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>시험딸깍_</title>
+<link rel="icon" type="image/png" href="assets/icon.png">
+<!-- 나눔명조: vendor/fonts(로컬, exe 포함)를 먼저 쓰고, 없으면 Google Fonts -->
+<link rel="stylesheet" href="vendor/fonts/nanum-myeongjo.css" onerror="var l=document.createElement('link');l.rel='stylesheet';l.href='https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700&display=swap';document.head.appendChild(l);">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/sheet.css">
+<script>
+  window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [] }, svg: { fontCache: 'global' }, startup: { typeset: false } };
+</script>
+<!-- 수식: vendor/mathjax(로컬, exe 포함)를 먼저 쓰고, 없으면 CDN -->
+<script src="vendor/mathjax/tex-svg.js" async onerror="var s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js';s.async=true;document.head.appendChild(s);"></script>
+</head>
+<body>
+<div id="title-screen" class="title-screen" hidden></div>
+
+<div id="app" class="app" hidden>
+  <header class="bar">
+    <div class="bar-left" id="bar-summary"></div>
+    <nav class="bar-actions">
+      <button class="tb" data-act="open-info">문제 설정</button>
+      <button class="tb" data-act="new">새 문항</button>
+      <button class="tb" data-act="save">저장</button>
+      <button class="tb" data-act="open">불러오기</button>
+    </nav>
+  </header>
+  <div class="work">
+    <aside class="sb" id="sb" aria-label="문항 구조와 속성 편집"></aside>
+    <main class="view" id="view"></main>
+    <aside class="side" id="side" aria-label="결과 보기"></aside>
+  </div>
+</div>
+
+<div class="overlay" id="info" hidden>
+  <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="info-title">
+    <div class="dialog-head"><h2 id="info-title">문제 설정</h2></div>
+    <div class="dialog-body" id="info-body"></div>
+    <div class="dialog-foot"><button class="btn-black" id="info-done" data-act="close-info">완료</button></div>
+  </div>
+</div>
+
+<div class="overlay" id="modal" hidden>
+  <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="dialog-head"><h2 id="modal-title"></h2><button class="tb" data-act="close-modal">닫기</button></div>
+    <div id="modal-body"></div>
+  </div>
+</div>
+<input type="file" id="file-input" accept=".json,application/json" hidden>
+<div class="toast" id="toast" role="status" hidden></div>
+
+<!-- 풀이 엔진 -->
+<script src="js/engine/numbers.js"></script>
+<script src="js/engine/poly.js"></script>
+<script src="js/engine/solver.js"></script>
+<script src="js/engine/question.js"></script>
+<script src="js/engine/index.js"></script>
+<!-- 예제 -->
+<script src="js/data/examples.js"></script>
+<!-- 화면 -->
+<script src="js/ui/core.js"></script>
+<script src="js/ui/model.js"></script>
+<script src="js/ui/sidebar.js"></script>
+<script src="js/ui/graph.js"></script>
+<script src="js/ui/views.js"></script>
+<script src="js/ui/aitext.js"></script>
+<script src="js/ui/io.js"></script>
+<script src="js/ui/main.js"></script>
+</body>
+</html>
